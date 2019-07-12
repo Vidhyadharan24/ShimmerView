@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import ShimmerView
 
 struct ContentView : View {
     var body: some View {
