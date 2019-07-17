@@ -1,6 +1,6 @@
 //
 //  AnimationLoop.swift
-//  TestApp
+//  ShimmerView
 //
 //  Created by Vidhyadharan Mohanram on 01/07/19.
 //  Copyright © 2019 Vid. All rights reserved.
@@ -29,4 +29,8 @@ class AnimationLoop: BindableObject {
         }
     }
     
+    deinit {
+        timer?.invalidate()
+        timer = nil
+    }
 }

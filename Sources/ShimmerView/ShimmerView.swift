@@ -1,6 +1,6 @@
 //
 //  ShimmerView.swift
-//  SideMenu
+//  ShimmerView
 //
 //  Created by Vidhyadharan Mohanram on 24/06/19.
 //  Copyright © 2019 Vid. All rights reserved.
@@ -9,10 +9,10 @@
 import SwiftUI
 
 public struct ShimmerModifier: ViewModifier {
-    let isActive: Binding<Bool>
+    let isActive: Bool
     
     public func body(content: _ViewModifier_Content<ShimmerModifier>) -> Self.Body {
-        guard isActive.value else { return AnyView(content) }
+        guard isActive else { return AnyView(content) }
         return AnyView(content.overlay(ShimmerView()).clipped())
     }
     
@@ -21,20 +21,19 @@ public struct ShimmerModifier: ViewModifier {
 
 extension View {
     
-    public dynamic func shimmer(isActive: Binding<Bool>) -> _ModifiedContent<Self, ShimmerModifier> {
+    public dynamic func shimmer(isActive: Bool) -> _ModifiedContent<Self, ShimmerModifier> {
         self.modifier(ShimmerModifier(isActive: isActive))
     }
     
 }
 
 struct ShimmerViewDemo : View {
-    @State var shouldShimmer: Bool = true
+    var shouldShimmer: Bool = true
     
     var body: some View {
         Text("Hello World")
-            .shimmer(isActive: $shouldShimmer)
+            .shimmer(isActive: shouldShimmer)
             .padding()
-        .environmentObject(ShimmerConfig())
     }
 }
 
@@ -51,6 +50,10 @@ struct ShimmerView : View {
         
         let gradient = Gradient(stops: [startGradient, maskGradient, endGradient])
         
+        let linearGradient = LinearGradient(gradient: gradient,
+                                            startPoint: .leading,
+                                            endPoint: .trailing)
+        
         return GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 Rectangle()
@@ -62,10 +65,7 @@ struct ShimmerView : View {
                     .mask(
                         Rectangle()
                             .foregroundColor(.clear)
-                            .background(LinearGradient(gradient: gradient,
-                                                       startPoint: .leading,
-                                                       endPoint: .trailing),
-                                        cornerRadius: 0)
+                            .background(linearGradient, cornerRadius: 0)
                             .rotationEffect(Angle(degrees: 20))
                             .offset(x: !self.isActive ? -geometry.size.width : geometry.size.width, y: 0)
                             .transition(.move(edge: .leading))

@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  ShimmerView
+//  ShimmerView-Example
 //
-//  Created by Vidhyadharan Mohanram on 03/07/19.
+//  Created by Vidhyadharan Mohanram on 23/06/19.
 //  Copyright © 2019 Vid. All rights reserved.
 //
 
@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: ContentView())
+            window.rootViewController = UIHostingController(rootView: MainView())
             self.window = window
             window.makeKeyAndVisible()
         }
