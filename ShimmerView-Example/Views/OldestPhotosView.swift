@@ -19,46 +19,55 @@ struct OldestPhotosView: View, CenterView {
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
-                // loading indicator label
-                if viewModel.isLoading {
-                    List {
-                        ForEach(1...3) { row in
-                            ListPhotoRow(shouldShimmer: true)
-                        }
-                    }
-                } else if !viewModel.errorMessage.isEmpty {
-                    Text(viewModel.errorMessage)
-                        .lineLimit(nil)
-                        .multilineTextAlignment(.center)
-                } else if viewModel.errorMessage.isEmpty {
-                    List(viewModel.photos) { photo in
-                        ListPhotoRow(photo: photo)
-                    }
-                }
+                containedView()
             }
             .navigationBarTitle("Oldest", displayMode: .inline)
-            .navigationBarItems(
-                leading: Button(action: {
-                    withAnimation {
-                        self.leftMenuState.toggle()
-                    }
-                }, label: {
-                    Image(systemName: SFSymbol.lineHorizontal3.rawValue)
-                        .accentColor(.blue)
-                        .imageScale(.large)
-                }),
-                trailing: Button(action: {
-                    withAnimation {
-                        self.rightMenuState.toggle()
-                    }
-                }, label: {
-                    Image(systemName: SFSymbol.lineHorizontal3.rawValue)
-                        .accentColor(.red)
-                        .imageScale(.large)
-
-                })
+                .navigationBarItems(
+                    leading: Button(action: {
+                        withAnimation {
+                            self.leftMenuState.toggle()
+                        }
+                    }, label: {
+                        Image(systemName: SFSymbol.lineHorizontal3.rawValue)
+                            .accentColor(.blue)
+                            .imageScale(.large)
+                    }),
+                    trailing: Button(action: {
+                        withAnimation {
+                            self.rightMenuState.toggle()
+                        }
+                    }, label: {
+                        Image(systemName: SFSymbol.lineHorizontal3.rawValue)
+                            .accentColor(.red)
+                            .imageScale(.large)
+                        
+                    })
             )
         }
+    }
+    
+    func containedView() -> AnyView {
+        let view: AnyView
+        switch viewModel.state {
+        case .loading:
+            view = AnyView(List {
+                ForEach(1...3) { row in
+                    ListPhotoRow(shouldShimmer: true)
+                }
+            })
+        case .completedWithNoData:
+            view = AnyView(Text("No photos"))
+        case .completed(let photos):
+            view = AnyView(List(photos) { photo in
+                ListPhotoRow(photo: photo)
+            })
+        case .failed(let errorMessage):
+            view = AnyView(Text(errorMessage)
+                .lineLimit(nil)
+                .multilineTextAlignment(.center))
+        }
+        
+        return view
     }
     
     // MARK: - Private
@@ -67,7 +76,7 @@ struct OldestPhotosView: View, CenterView {
         self.viewModel.fetchPhotos(orderBy: .oldest)
     }
     
-    init(leftMenuState: Binding<Bool>, rightMenuState: Binding<Bool>) {
+    init(leftMenuState: Binding<Bool>? = nil, rightMenuState: Binding<Bool>? = nil) {
         self.$leftMenuState = leftMenuState ?? .constant(false)
         self.$rightMenuState = rightMenuState ?? .constant(false)
         fetchData()
@@ -81,9 +90,3 @@ struct OldestPhotosView_Previews : PreviewProvider {
     }
 }
 #endif
-
-
-
-
-
-

@@ -9,12 +9,6 @@
 import SwiftUI
 import Combine
 
-enum ViewState<T> {
-    case loading
-    case completed(response: T)
-    case failed(error: String)
-}
-
 class PhotosViewModel: BindableObject {
     typealias ViewModelSubject = PassthroughSubject<PhotosViewModel, Never>
     typealias ResponseSubject = PassthroughSubject<[Photo], NetworkError>
@@ -30,30 +24,9 @@ class PhotosViewModel: BindableObject {
     private let errorSubject = ResponseSubject()
     private var cancellables = [AnyCancellable]()
     
-    var state: ViewState<[Photo]> = .completed(response: []) {
+    var state: ViewState<[Photo]> = .completedWithNoData {
         didSet {
             didChange.send(self)
-        }
-    }
-    
-    var isLoading: Bool {
-        get {
-            guard case .loading = self.state else { return false }
-            return true
-        }
-    }
-    
-    var errorMessage: String {
-        get {
-            guard case .failed(let errorMsg) = self.state else { return "" }
-            return errorMsg
-        }
-    }
-    
-    var photos: [Photo] {
-        get {
-            guard case .completed(let photos) = self.state else { return [] }
-            return photos
         }
     }
     
@@ -80,16 +53,17 @@ class PhotosViewModel: BindableObject {
             self?.state = .failed(error: error.message)
             return Publishers.Empty()
         }.share() // return this publisher as class instance (this is later to cancel on AnyCancellable)
-        .subscribe(self.errorSubject) // attach to `errorSubject` subscriber
+            .subscribe(self.errorSubject) // attach to `errorSubject` subscriber
         
         // attach `responseSubject` with closure handler, here we process `models` setter
         _ = self.responseSubject
-            .sink { [weak self] photos in self?.state = .completed(response: photos) }
-        
-//         combine both `responseSubject` and `errorSubject` stream
-//        _ = Publishers.CombineLatest(responseSubject, errorSubject)
-//            .map { tuple in tuple.0.isEmpty || tuple.1.isEmpty }
-//            .sink { result in self.state = .isLoading(result) }
+            .sink { [weak self] photos in
+                if photos.count > 0 {
+                    self?.state = .completed(response: photos)
+                } else {
+                    self?.state = .completedWithNoData
+                }
+        }
         
         // collect AnyCancellable subjects to discard later when `SplashViewModel` life cycle ended
         self.cancellables += [
@@ -99,6 +73,3 @@ class PhotosViewModel: BindableObject {
     }
     
 }
-
-
-

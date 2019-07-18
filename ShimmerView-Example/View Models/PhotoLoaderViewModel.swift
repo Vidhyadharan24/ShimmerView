@@ -12,9 +12,9 @@ import Combine
 class PhotoLoaderViewModel: BindableObject {
     typealias ViewModelSubject = PassthroughSubject<PhotoLoaderViewModel, Never>
     typealias ResponseSubject = PassthroughSubject<UIImage?, NetworkError>
-
+    
     private lazy var imageLoader = ImageLoader()
-
+    
     internal let didChange = ViewModelSubject()
     private let responseSubject = ResponseSubject()
     private let errorSubject = ResponseSubject()
@@ -24,32 +24,11 @@ class PhotoLoaderViewModel: BindableObject {
     
     var imageUrlString: String? = nil
     
-    var state: ViewState<UIImage> = .completed(response: #imageLiteral(resourceName: "placeholder")) {
+    var state: ViewState<UIImage> = .completedWithNoData {
         didSet {
             withAnimation {
                 didChange.send(self)
             }
-        }
-    }
-    
-    var isLoading: Bool {
-        get {
-            guard case .loading = self.state else { return false }
-            return true
-        }
-    }
-    
-    var errorMessage: String {
-        get {
-            guard case .failed(let errorMsg) = self.state else { return "" }
-            return errorMsg
-        }
-    }
-    
-    var image: UIImage {
-        get {
-            guard case .completed(let image) = self.state else { return #imageLiteral(resourceName: "placeholder") }
-            return image
         }
     }
     
@@ -64,7 +43,7 @@ class PhotoLoaderViewModel: BindableObject {
     func fetchImage(urlString: String?) {
         guard let urlString = urlString,
             (imageUrlString == nil || imageUrlString! != urlString)  else {
-            return
+                return
         }
         
         guard let url = URL(string: urlString) else {
@@ -75,7 +54,7 @@ class PhotoLoaderViewModel: BindableObject {
         cancel()
         
         imageUrlString = urlString
-
+        
         let urlRequest = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         if let data = URLCache.shared.cachedResponse(for: urlRequest)?.data, let cachedImage = UIImage(data: data) {
             self.state = .completed(response: cachedImage)
@@ -86,7 +65,7 @@ class PhotoLoaderViewModel: BindableObject {
         
         let responsePublisher = self.imageLoader.loadImage(urlRequest)
         
-
+        
         // map responseStream into AnyCancellable
         let responseStream = responsePublisher
             .share() // return as class instance (this is later to cancel on AnyCancellable)
@@ -99,12 +78,16 @@ class PhotoLoaderViewModel: BindableObject {
                 return Publishers.Empty()
         }
         .share()
-        .subscribe(self.errorSubject)
+            .subscribe(self.errorSubject)
         
         // attach `responseSubject` with closure handler, here we process `models` setter
         _ = self.responseSubject
             .sink { [weak self] image in
-                self?.state = .completed(response: image ??  #imageLiteral(resourceName: "placeholder"))
+                if let loadedImage = image {
+                    self?.state = .completed(response: loadedImage)
+                } else {
+                    self?.state = .completedWithNoData
+                }
         }
         
         // collect AnyCancellable subjects to discard later when `SplashViewModel` life cycle ended
