@@ -33,7 +33,7 @@ internal struct RightMenu: View, MenuView {
             }.relativeSize(width: 1, height: 1)
         }
         .background(Color.red)
-            .background(Rectangle().shadow(radius: 4)).relativeSize(width: 1, height: 1)
+            .background(Rectangle().shadow(radius: 4))
     }
     
     init(showLeftMenu: Binding<Bool>? = nil, showRightMenu: Binding<Bool>? = nil, centerView: Binding<AnyView?>) {

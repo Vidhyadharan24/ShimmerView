@@ -41,10 +41,10 @@
 		1806303A22D8743900A069AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1806303922D8743900A069AE /* Preview Assets.xcassets */; };
 		1806303D22D8743900A069AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1806303B22D8743900A069AE /* LaunchScreen.storyboard */; };
 		1864AA7722E03A91002406F5 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864AA7622E03A91002406F5 /* ViewState.swift */; };
-		189D933722D90DE400AFD95F /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 189D933622D90DE400AFD95F /* SideMenu */; };
 		18BADE5022D877DC0004026F /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BADE4D22D877DC0004026F /* ShimmerView.swift */; };
 		18BADE5122D877DC0004026F /* ShimmerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BADE4E22D877DC0004026F /* ShimmerConfig.swift */; };
 		18BADE5222D877DC0004026F /* AnimationLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BADE4F22D877DC0004026F /* AnimationLoop.swift */; };
+		18C9D22B22E056D10083BADF /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 18C9D22A22E056D10083BADF /* SideMenu */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,8 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C9D22B22E056D10083BADF /* SideMenu in Frameworks */,
 				1803896322DF4C760044A3C8 /* SFSafeSymbols in Frameworks */,
-				189D933722D90DE400AFD95F /* SideMenu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +258,8 @@
 			);
 			name = "ShimmerView-Example";
 			packageProductDependencies = (
-				189D933622D90DE400AFD95F /* SideMenu */,
 				1803896222DF4C760044A3C8 /* SFSafeSymbols */,
+				18C9D22A22E056D10083BADF /* SideMenu */,
 			);
 			productName = "ShimmerView-Example";
 			productReference = 1806302D22D8743800A069AE /* ShimmerView-Example.app */;
@@ -290,8 +290,8 @@
 			);
 			mainGroup = 1806302422D8743800A069AE;
 			packageReferences = (
-				189D933522D90DE400AFD95F /* XCRemoteSwiftPackageReference "SideMenu" */,
 				1803896122DF4C760044A3C8 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				18C9D22922E056D10083BADF /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 1806302E22D8743800A069AE /* Products */;
 			projectDirPath = "";
@@ -564,7 +564,7 @@
 				minimumVersion = 0.4.0;
 			};
 		};
-		189D933522D90DE400AFD95F /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+		18C9D22922E056D10083BADF /* XCRemoteSwiftPackageReference "SideMenu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Vidhyadharan-Mohanram/SideMenu";
 			requirement = {
@@ -580,9 +580,9 @@
 			package = 1803896122DF4C760044A3C8 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
 		};
-		189D933622D90DE400AFD95F /* SideMenu */ = {
+		18C9D22A22E056D10083BADF /* SideMenu */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 189D933522D90DE400AFD95F /* XCRemoteSwiftPackageReference "SideMenu" */;
+			package = 18C9D22922E056D10083BADF /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
