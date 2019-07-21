@@ -8,7 +8,7 @@
 
 import SwiftUI
 import SFSafeSymbols
-//import SideMenu
+import SideMenu
 
 struct LatestPhotosView: View, CenterView {
     @Binding var leftMenuState: Bool
