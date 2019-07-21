@@ -10,13 +10,13 @@ import SwiftUI
 import Combine
 
 class AnimationLoop: BindableObject {
-    let didChange = PassthroughSubject<AnimationLoop, Never>()
+    let willChange = PassthroughSubject<AnimationLoop, Never>()
 
     private var timer: Timer?
     
     public var isActive: Bool = false {
-        didSet {
-            didChange.send(self)
+        willSet {
+            willChange.send(self)
         }
     }
 

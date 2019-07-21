@@ -69,10 +69,10 @@ struct ShimmerView : View {
                             .rotationEffect(Angle(degrees: 20))
                             .offset(x: !self.isActive ? -geometry.size.width : geometry.size.width, y: 0)
                             .transition(.move(edge: .leading))
-                            .animation(.basic(duration: 0.9, curve: .linear))
+                            .animation(.linear(duration: 0.9))
                 )
-            }
-        }.relativeSize(width: 1.0, height: 2)
+            }.padding(EdgeInsets(top: -(geometry.size.height/2), leading: 0, bottom: -(geometry.size.height/2), trailing: 0))
+        }
     }
 }
 

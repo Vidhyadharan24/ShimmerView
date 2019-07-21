@@ -8,7 +8,7 @@
 
 import SwiftUI
 import SFSafeSymbols
-import SideMenu
+//import SideMenu
 
 struct PopularPhotosView: View, CenterView {
     @Binding var leftMenuState: Bool
@@ -76,9 +76,9 @@ struct PopularPhotosView: View, CenterView {
         self.viewModel.fetchPhotos(orderBy: .popular)
     }
     
-    init(leftMenuState: Binding<Bool>? = nil, rightMenuState: Binding<Bool>? = nil) {
-        self.$leftMenuState = leftMenuState ?? .constant(false)
-        self.$rightMenuState = rightMenuState ?? .constant(false)
+    init(leftMenuState: Binding<Bool> = .constant(false), rightMenuState: Binding<Bool> = .constant(false)) {
+        self._leftMenuState = leftMenuState
+        self._rightMenuState = rightMenuState
         
         fetchData()
     }

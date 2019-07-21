@@ -24,14 +24,6 @@
 		1803895422DF4C4E0044A3C8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893622DF4C4E0044A3C8 /* NetworkError.swift */; };
 		1803895522DF4C4E0044A3C8 /* UserLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893722DF4C4E0044A3C8 /* UserLinks.swift */; };
 		1803895622DF4C4E0044A3C8 /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893822DF4C4E0044A3C8 /* Urls.swift */; };
-		1803895722DF4C4E0044A3C8 /* RightMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893A22DF4C4E0044A3C8 /* RightMenu.swift */; };
-		1803895822DF4C4E0044A3C8 /* ListPhotoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893B22DF4C4E0044A3C8 /* ListPhotoRow.swift */; };
-		1803895922DF4C4E0044A3C8 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893C22DF4C4E0044A3C8 /* NetworkImageView.swift */; };
-		1803895A22DF4C4E0044A3C8 /* LeftMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893D22DF4C4E0044A3C8 /* LeftMenu.swift */; };
-		1803895B22DF4C4E0044A3C8 /* PopularPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893E22DF4C4E0044A3C8 /* PopularPhotosView.swift */; };
-		1803895C22DF4C4E0044A3C8 /* LatestPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893F22DF4C4E0044A3C8 /* LatestPhotosView.swift */; };
-		1803895D22DF4C4E0044A3C8 /* OldestPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803894022DF4C4E0044A3C8 /* OldestPhotosView.swift */; };
-		1803895E22DF4C4E0044A3C8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803894122DF4C4E0044A3C8 /* MainView.swift */; };
 		1803895F22DF4C4E0044A3C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1803894322DF4C4E0044A3C8 /* LaunchScreen.storyboard */; };
 		1803896022DF4C4E0044A3C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1803894522DF4C4E0044A3C8 /* Assets.xcassets */; };
 		1803896322DF4C760044A3C8 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 1803896222DF4C760044A3C8 /* SFSafeSymbols */; };
@@ -41,10 +33,18 @@
 		1806303A22D8743900A069AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1806303922D8743900A069AE /* Preview Assets.xcassets */; };
 		1806303D22D8743900A069AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1806303B22D8743900A069AE /* LaunchScreen.storyboard */; };
 		1864AA7722E03A91002406F5 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1864AA7622E03A91002406F5 /* ViewState.swift */; };
+		1895D09522E466A0009245EC /* RightMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893A22DF4C4E0044A3C8 /* RightMenu.swift */; };
+		1895D09622E466A0009245EC /* ListPhotoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893B22DF4C4E0044A3C8 /* ListPhotoRow.swift */; };
+		1895D09722E466A0009245EC /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893C22DF4C4E0044A3C8 /* NetworkImageView.swift */; };
+		1895D09822E466A0009245EC /* LeftMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893D22DF4C4E0044A3C8 /* LeftMenu.swift */; };
+		1895D09922E466A0009245EC /* PopularPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893E22DF4C4E0044A3C8 /* PopularPhotosView.swift */; };
+		1895D09A22E466A0009245EC /* LatestPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803893F22DF4C4E0044A3C8 /* LatestPhotosView.swift */; };
+		1895D09B22E466A0009245EC /* OldestPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803894022DF4C4E0044A3C8 /* OldestPhotosView.swift */; };
+		1895D09C22E466A0009245EC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803894122DF4C4E0044A3C8 /* MainView.swift */; };
+		1895D09F22E482CA009245EC /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 1895D09E22E482CA009245EC /* SideMenu */; };
 		18BADE5022D877DC0004026F /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BADE4D22D877DC0004026F /* ShimmerView.swift */; };
 		18BADE5122D877DC0004026F /* ShimmerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BADE4E22D877DC0004026F /* ShimmerConfig.swift */; };
 		18BADE5222D877DC0004026F /* AnimationLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BADE4F22D877DC0004026F /* AnimationLoop.swift */; };
-		18C9D22B22E056D10083BADF /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 18C9D22A22E056D10083BADF /* SideMenu */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C9D22B22E056D10083BADF /* SideMenu in Frameworks */,
+				1895D09F22E482CA009245EC /* SideMenu in Frameworks */,
 				1803896322DF4C760044A3C8 /* SFSafeSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,7 +259,7 @@
 			name = "ShimmerView-Example";
 			packageProductDependencies = (
 				1803896222DF4C760044A3C8 /* SFSafeSymbols */,
-				18C9D22A22E056D10083BADF /* SideMenu */,
+				1895D09E22E482CA009245EC /* SideMenu */,
 			);
 			productName = "ShimmerView-Example";
 			productReference = 1806302D22D8743800A069AE /* ShimmerView-Example.app */;
@@ -291,7 +291,7 @@
 			mainGroup = 1806302422D8743800A069AE;
 			packageReferences = (
 				1803896122DF4C760044A3C8 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
-				18C9D22922E056D10083BADF /* XCRemoteSwiftPackageReference "SideMenu" */,
+				1895D09D22E482CA009245EC /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 1806302E22D8743800A069AE /* Products */;
 			projectDirPath = "";
@@ -324,35 +324,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				1803894722DF4C4E0044A3C8 /* ImageLoader.swift in Sources */,
+				1895D09C22E466A0009245EC /* MainView.swift in Sources */,
 				18BADE5222D877DC0004026F /* AnimationLoop.swift in Sources */,
+				1895D09722E466A0009245EC /* NetworkImageView.swift in Sources */,
 				1864AA7722E03A91002406F5 /* ViewState.swift in Sources */,
-				1803895722DF4C4E0044A3C8 /* RightMenu.swift in Sources */,
 				18BADE5022D877DC0004026F /* ShimmerView.swift in Sources */,
 				1803895322DF4C4E0044A3C8 /* Sponsorship.swift in Sources */,
 				1803894B22DF4C4E0044A3C8 /* PhotoLoaderViewModel.swift in Sources */,
+				1895D09822E466A0009245EC /* LeftMenu.swift in Sources */,
 				1803894E22DF4C4E0044A3C8 /* PhotoLinks.swift in Sources */,
 				1806303122D8743800A069AE /* AppDelegate.swift in Sources */,
+				1895D09A22E466A0009245EC /* LatestPhotosView.swift in Sources */,
 				1803894C22DF4C4E0044A3C8 /* DateFormaterExtension.swift in Sources */,
-				1803895D22DF4C4E0044A3C8 /* OldestPhotosView.swift in Sources */,
+				1895D09B22E466A0009245EC /* OldestPhotosView.swift in Sources */,
+				1895D09922E466A0009245EC /* PopularPhotosView.swift in Sources */,
 				18BADE5122D877DC0004026F /* ShimmerConfig.swift in Sources */,
 				1803895422DF4C4E0044A3C8 /* NetworkError.swift in Sources */,
-				1803895822DF4C4E0044A3C8 /* ListPhotoRow.swift in Sources */,
-				1803895E22DF4C4E0044A3C8 /* MainView.swift in Sources */,
 				1803894F22DF4C4E0044A3C8 /* User.swift in Sources */,
-				1803895A22DF4C4E0044A3C8 /* LeftMenu.swift in Sources */,
 				1803894D22DF4C4E0044A3C8 /* Constants.swift in Sources */,
-				1803895B22DF4C4E0044A3C8 /* PopularPhotosView.swift in Sources */,
 				1803895122DF4C4E0044A3C8 /* Photo.swift in Sources */,
 				1803895022DF4C4E0044A3C8 /* JSONSchemaSupport.swift in Sources */,
-				1803895922DF4C4E0044A3C8 /* NetworkImageView.swift in Sources */,
 				1803894822DF4C4E0044A3C8 /* PhotosEndPoint.swift in Sources */,
+				1895D09522E466A0009245EC /* RightMenu.swift in Sources */,
 				1803895622DF4C4E0044A3C8 /* Urls.swift in Sources */,
+				1895D09622E466A0009245EC /* ListPhotoRow.swift in Sources */,
 				1803895222DF4C4E0044A3C8 /* ProfileImage.swift in Sources */,
 				1806303322D8743800A069AE /* SceneDelegate.swift in Sources */,
 				1803895522DF4C4E0044A3C8 /* UserLinks.swift in Sources */,
 				1803894A22DF4C4E0044A3C8 /* PhotosViewModel.swift in Sources */,
 				1803894922DF4C4E0044A3C8 /* APIService.swift in Sources */,
-				1803895C22DF4C4E0044A3C8 /* LatestPhotosView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +564,7 @@
 				minimumVersion = 0.4.0;
 			};
 		};
-		18C9D22922E056D10083BADF /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+		1895D09D22E482CA009245EC /* XCRemoteSwiftPackageReference "SideMenu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Vidhyadharan-Mohanram/SideMenu";
 			requirement = {
@@ -580,9 +580,9 @@
 			package = 1803896122DF4C760044A3C8 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
 		};
-		18C9D22A22E056D10083BADF /* SideMenu */ = {
+		1895D09E22E482CA009245EC /* SideMenu */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18C9D22922E056D10083BADF /* XCRemoteSwiftPackageReference "SideMenu" */;
+			package = 1895D09D22E482CA009245EC /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
 		};
 /* End XCSwiftPackageProductDependency section */
