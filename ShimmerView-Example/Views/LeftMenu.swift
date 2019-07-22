@@ -27,7 +27,8 @@ internal struct LeftMenu: View, MenuView {
                         self.showLeftMenu.toggle()
                     }
                 }, label: {
-                    Text("Show Popular Photos").color(.black) })
+                    Text("Show Popular Photos")
+                        .foregroundColor(.black) })
                 Spacer()
             }
         }
