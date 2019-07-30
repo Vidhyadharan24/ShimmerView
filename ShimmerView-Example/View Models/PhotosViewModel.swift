@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class PhotosViewModel: BindableObject {
+class PhotosViewModel: ObservableObject {
     typealias ViewModelSubject = PassthroughSubject<PhotosViewModel, Never>
     
     // MARK: - Properties
@@ -21,11 +21,7 @@ class PhotosViewModel: BindableObject {
     internal let willChange = ViewModelSubject()
     private var cancellables = [AnyCancellable]()
     
-    var state: ViewState<[Photo]> = .completedWithNoData {
-        willSet {
-            willChange.send(self)
-        }
-    }
+    @Published var state: ViewState<[Photo]> = .completedWithNoData
     
     deinit {
         _ = self.cancellables.map { $0.cancel() }

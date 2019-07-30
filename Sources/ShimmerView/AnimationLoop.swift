@@ -9,17 +9,17 @@
 import SwiftUI
 import Combine
 
-class AnimationLoop: BindableObject {
+class AnimationLoop: ObservableObject {
     let willChange = PassthroughSubject<AnimationLoop, Never>()
 
     private var timer: Timer?
     
-    public var isActive: Bool = false {
+    @Published public var isActive: Bool = false {
         willSet {
             willChange.send(self)
         }
     }
-
+    
     init() {
         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] _ in
             guard let self = self else { return }

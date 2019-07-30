@@ -9,21 +9,13 @@
 import SwiftUI
 import Combine
 
-public class ShimmerConfig: BindableObject {
+public class ShimmerConfig: ObservableObject {
     
     public let willChange = PassthroughSubject<ShimmerConfig, Never>()
     
-    var bgColor: Color {
-        willSet {
-            willChange.send(self)
-        }
-    }
+    @Published var bgColor: Color
     
-    var fgColor: Color {
-        willSet {
-            willChange.send(self)
-        }
-    }
+    @Published var fgColor: Color
     
     public init(bgColor: Color? = nil, fgColor: Color? = nil) {
         self.bgColor = bgColor ?? Color(white: 0.7843137255)

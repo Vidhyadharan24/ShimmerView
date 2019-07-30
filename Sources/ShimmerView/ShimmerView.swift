@@ -21,7 +21,7 @@ public struct ShimmerModifier: ViewModifier {
 
 extension View {
     
-    public dynamic func shimmer(isActive: Bool) -> _ModifiedContent<Self, ShimmerModifier> {
+    public dynamic func shimmer(isActive: Bool) -> ModifiedContent<Self, ShimmerModifier> {
         self.modifier(ShimmerModifier(isActive: isActive))
     }
     
@@ -39,7 +39,7 @@ struct ShimmerViewDemo : View {
 
 struct ShimmerView : View {
     @EnvironmentObject private var shimmerConfig: ShimmerConfig
-    @ObjectBinding private var animationLoop: AnimationLoop = AnimationLoop()
+    @ObservedObject private var animationLoop: AnimationLoop = AnimationLoop()
     
     var isActive: Bool { animationLoop.isActive }
     
@@ -65,7 +65,7 @@ struct ShimmerView : View {
                     .mask(
                         Rectangle()
                             .foregroundColor(.clear)
-                            .background(linearGradient, cornerRadius: 0)
+                            .background(linearGradient)
                             .rotationEffect(Angle(degrees: 20))
                             .offset(x: !self.isActive ? -geometry.size.width : geometry.size.width, y: 0)
                             .transition(.move(edge: .leading))

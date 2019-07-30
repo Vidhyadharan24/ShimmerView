@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class PhotoLoaderViewModel: BindableObject {
+class PhotoLoaderViewModel: ObservableObject {
     typealias ViewModelSubject = PassthroughSubject<PhotoLoaderViewModel, Never>
     
     private lazy var imageLoader = ImageLoader()
@@ -17,14 +17,7 @@ class PhotoLoaderViewModel: BindableObject {
     internal let willChange = ViewModelSubject()
     private var cancellables = [AnyCancellable]()
             
-    var state: ViewState<UIImage> = .completedWithNoData {
-        willSet {
-            withAnimation {
-                willChange.send(self)
-            }
-        }
-    }
-    
+    @Published var state: ViewState<UIImage> = .completedWithNoData
     
     deinit {
         cancel()
