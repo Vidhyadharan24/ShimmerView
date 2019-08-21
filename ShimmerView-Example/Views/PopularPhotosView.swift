@@ -10,7 +10,7 @@ import SwiftUI
 import SFSafeSymbols
 import SideMenu
 
-struct PopularPhotosView: View, CenterView {
+struct PopularPhotosView: View {
     @Binding var leftMenuState: Bool
     @Binding var rightMenuState: Bool
     

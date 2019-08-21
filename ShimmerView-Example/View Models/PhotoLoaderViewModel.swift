@@ -14,7 +14,6 @@ class PhotoLoaderViewModel: ObservableObject {
     
     private lazy var imageLoader = ImageLoader()
     
-    internal let willChange = ViewModelSubject()
     private var cancellables = [AnyCancellable]()
             
     @Published var state: ViewState<UIImage> = .completedWithNoData

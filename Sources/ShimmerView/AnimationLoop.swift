@@ -14,11 +14,7 @@ class AnimationLoop: ObservableObject {
 
     private var timer: Timer?
     
-    @Published public var isActive: Bool = false {
-        willSet {
-            willChange.send(self)
-        }
-    }
+    @Published public var isActive: Bool = false
     
     init() {
         timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] _ in

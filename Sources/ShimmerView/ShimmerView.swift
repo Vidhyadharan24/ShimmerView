@@ -40,9 +40,7 @@ struct ShimmerViewDemo : View {
 struct ShimmerView : View {
     @EnvironmentObject private var shimmerConfig: ShimmerConfig
     @ObservedObject private var animationLoop: AnimationLoop = AnimationLoop()
-    
-    var isActive: Bool { animationLoop.isActive }
-    
+        
     var body: some View {
         let startGradient = Gradient.Stop(color: .clear, location: 0.2)
         let endGradient = Gradient.Stop(color: .clear, location: 0.8)
@@ -67,7 +65,7 @@ struct ShimmerView : View {
                             .foregroundColor(.clear)
                             .background(linearGradient)
                             .rotationEffect(Angle(degrees: 20))
-                            .offset(x: !self.isActive ? -geometry.size.width : geometry.size.width, y: 0)
+                            .offset(x: !self.animationLoop.isActive ? -geometry.size.width : geometry.size.width, y: 0)
                             .transition(.move(edge: .leading))
                             .animation(.linear(duration: 0.9))
                 )

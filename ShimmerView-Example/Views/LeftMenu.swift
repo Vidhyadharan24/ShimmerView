@@ -9,7 +9,7 @@
 import SwiftUI
 import SideMenu
 
-internal struct LeftMenu: View, MenuView {
+internal struct LeftMenu: View {
     @Binding var showLeftMenu: Bool
     @Binding var showRightMenu: Bool
     
