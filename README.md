@@ -2,7 +2,7 @@
 
 ## Overview
 
-SwiftUI implementation of shimmering effect.
+ShimmerView is a SwiftUI implementation of Facebook shimmering effect. It's implemented as a SwiftUI view modifier allowing developers to add shimmering effect to any of SwiftUI View in a single line.
 
 ### Preview Samples
 
