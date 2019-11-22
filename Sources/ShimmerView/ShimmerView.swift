@@ -11,7 +11,7 @@ import SwiftUI
 public struct ShimmerModifier: ViewModifier {
     let isActive: Bool
     
-    public func body(content: _ViewModifier_Content<ShimmerModifier>) -> Self.Body {
+    public func body(content: Content) -> Self.Body {
         guard isActive else { return AnyView(content) }
         return AnyView(content.overlay(ShimmerView()).clipped())
     }
@@ -21,7 +21,7 @@ public struct ShimmerModifier: ViewModifier {
 
 extension View {
     
-    public dynamic func shimmer(isActive: Bool) -> ModifiedContent<Self, ShimmerModifier> {
+    public dynamic func shimmer(isActive: Bool) -> some View {
         self.modifier(ShimmerModifier(isActive: isActive))
     }
     
@@ -31,46 +31,47 @@ struct ShimmerViewDemo : View {
     var shouldShimmer: Bool = true
     
     var body: some View {
-        Text("Hello World")
+        Rectangle()
             .shimmer(isActive: shouldShimmer)
-            .padding()
     }
 }
 
 struct ShimmerView : View {
     @EnvironmentObject private var shimmerConfig: ShimmerConfig
-    @ObservedObject private var animationLoop: AnimationLoop = AnimationLoop()
         
     var body: some View {
-        let startGradient = Gradient.Stop(color: .clear, location: 0.2)
-        let endGradient = Gradient.Stop(color: .clear, location: 0.8)
-        let maskGradient = Gradient.Stop(color: Color(white: 1.0, opacity: 0.4), location: 0.5)
+        let startGradient = Gradient.Stop(color: self.shimmerConfig.bgColor, location: 0.3)
+        let endGradient = Gradient.Stop(color: self.shimmerConfig.bgColor, location: 0.7)
+        let maskGradient = Gradient.Stop(color: self.shimmerConfig.shimmerColor, location: 0.5)
         
         let gradient = Gradient(stops: [startGradient, maskGradient, endGradient])
         
         let linearGradient = LinearGradient(gradient: gradient,
                                             startPoint: .leading,
                                             endPoint: .trailing)
-        
+            
         return GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 Rectangle()
                     .background(self.shimmerConfig.bgColor)
-                    .foregroundColor(Color.clear)
-                Rectangle()
-                    .background(self.shimmerConfig.fgColor)
                     .foregroundColor(.clear)
-                    .mask(
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .background(linearGradient)
-                            .rotationEffect(Angle(degrees: 20))
-                            .offset(x: !self.animationLoop.isActive ? -geometry.size.width : geometry.size.width, y: 0)
-                            .transition(.move(edge: .leading))
-                            .animation(.linear(duration: 0.9))
-                )
-            }.padding(EdgeInsets(top: -(geometry.size.height/2), leading: 0, bottom: -(geometry.size.height/2), trailing: 0))
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .background(linearGradient)
+                    .rotationEffect(Angle(degrees: self.shimmerConfig.shimmerAngle))
+                    .offset(x: self.shimmerConfig.isActive ? self.shimmerOffset(geometry.size.width) : -self.shimmerOffset(geometry.size.width), y: 0)
+                    .transition(.move(edge: .leading))
+                    .animation(.linear(duration: self.shimmerConfig.shimmerDuration))
+            }
+            .padding(EdgeInsets(top: -self.shimmerOffset(geometry.size.width),
+                                leading: 0,
+                                bottom: -self.shimmerOffset(geometry.size.width),
+                                trailing: 0))
         }
+    }
+    
+    func shimmerOffset(_ width: CGFloat) -> CGFloat {
+        width + CGFloat(2 * self.shimmerConfig.shimmerAngle)
     }
 }
 
@@ -80,6 +81,7 @@ struct ShimmerView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
             ShimmerViewDemo()
+            .environmentObject(ShimmerConfig())
         }
     }
 }
