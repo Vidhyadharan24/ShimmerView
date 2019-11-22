@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class ShimmerConfig: ObservableObject {
+public class ShimmerConfig: ObservableObject {
     
     public let willChange = PassthroughSubject<ShimmerConfig, Never>()
     
