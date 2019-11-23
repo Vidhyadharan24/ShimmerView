@@ -15,7 +15,7 @@ struct NetworkImageView: View {
     let urlString: String?
     let shouldShimmer: Bool
     
-   var body: some View {
+    var body: some View {
         GeometryReader { _ in
             self.containedView()
                 .listRowInsets(EdgeInsets.init(top: 5, leading: 15, bottom: 5, trailing: 15))

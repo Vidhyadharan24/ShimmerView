@@ -51,7 +51,7 @@ struct PopularPhotosView: View {
         switch viewModel.state {
         case .loading:
             view = AnyView(List {
-                ForEach(1..<4) {_ in
+                ForEach(1..<4) { _ in
                     ListPhotoRow(shouldShimmer: true)
                 }
             })

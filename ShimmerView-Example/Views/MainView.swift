@@ -1,6 +1,6 @@
 //
 //  MainView.swift
-//  ShimmerView
+//  ShimmerView-Example
 //
 //  Created by Vidhyadharan Mohanram on 18/06/19.
 //  Copyright © 2019 Vid. All rights reserved.
@@ -17,8 +17,10 @@ struct MainView : View {
     @State var showRightMenu: Bool = false
     
     var body: some View {
-        let leftMenu = LeftMenu(showLeftMenu: $showLeftMenu, showRightMenu: $showRightMenu, centerView: $centerView)
-        let rightMenu = RightMenu(showLeftMenu: $showLeftMenu, showRightMenu: $showRightMenu, centerView: $centerView)
+        let leftMenu = LeftMenu(showLeftMenu: $showLeftMenu, showRightMenu: $showRightMenu,
+                                centerView: $centerView)
+        let rightMenu = RightMenu(showLeftMenu: $showLeftMenu, showRightMenu: $showRightMenu,
+                                  centerView: $centerView)
         
         return SideMenu(leftMenu: leftMenu, showLeftMenu: $showLeftMenu,
                         rightMenu: rightMenu, showRightMenu: $showRightMenu,
@@ -26,10 +28,12 @@ struct MainView : View {
             .environmentObject(ShimmerConfig())
             .onAppear {
                 withAnimation {
-                    self.centerView = AnyView(LatestPhotosView(leftMenuState: self.$showLeftMenu, rightMenuState: self.$showRightMenu))
+                    self.centerView = AnyView(LatestPhotosView(leftMenuState: self.$showLeftMenu,
+                                                               rightMenuState: self.$showRightMenu))
                 }
         }
     }
+    
 }
 
 #if DEBUG

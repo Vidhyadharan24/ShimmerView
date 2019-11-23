@@ -22,26 +22,26 @@ struct LatestPhotosView: View {
                 containedView()
             }
             .navigationBarTitle("Latest", displayMode: .inline)
-                .navigationBarItems(
-                    leading: Button(action: {
-                        withAnimation {
-                            self.leftMenuState.toggle()
-                        }
-                    }, label: {
-                        Image(systemName: SFSymbol.lineHorizontal3.rawValue)
-                            .accentColor(.blue)
-                            .imageScale(.large)
-                    }),
-                    trailing: Button(action: {
-                        withAnimation {
-                            self.rightMenuState.toggle()
-                        }
-                    }, label: {
-                        Image(systemName: SFSymbol.lineHorizontal3.rawValue)
-                            .accentColor(.red)
-                            .imageScale(.large)
-                        
-                    })
+            .navigationBarItems(
+                leading: Button(action: {
+                    withAnimation {
+                        self.leftMenuState.toggle()
+                    }
+                }, label: {
+                    Image(systemName: SFSymbol.lineHorizontal3.rawValue)
+                        .accentColor(.blue)
+                        .imageScale(.large)
+                }),
+                trailing: Button(action: {
+                    withAnimation {
+                        self.rightMenuState.toggle()
+                    }
+                }, label: {
+                    Image(systemName: SFSymbol.lineHorizontal3.rawValue)
+                        .accentColor(.red)
+                        .imageScale(.large)
+
+                })
             )
         }
     }
@@ -51,7 +51,7 @@ struct LatestPhotosView: View {
         switch viewModel.state {
         case .loading:
             view = AnyView(List {
-                ForEach(1..<4) {_ in
+                ForEach(1..<4) { _ in
                     ListPhotoRow(shouldShimmer: true)
                 }
             })
@@ -79,7 +79,7 @@ struct LatestPhotosView: View {
     init(leftMenuState: Binding<Bool> = .constant(false), rightMenuState: Binding<Bool> = .constant(false)) {
         self._leftMenuState = leftMenuState
         self._rightMenuState = rightMenuState
-        
+
         fetchData()
     }
 }

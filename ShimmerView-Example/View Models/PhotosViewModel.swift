@@ -15,7 +15,7 @@ class PhotosViewModel: ObservableObject {
     // MARK: - Properties
     
     private lazy var apiService = APIService<[Photo]>()
-        
+    
     private var cancellables = [AnyCancellable]()
     
     @Published var state: ViewState<[Photo]> = .completedWithNoData

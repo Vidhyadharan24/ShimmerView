@@ -23,17 +23,18 @@ internal struct RightMenu: View {
                     .foregroundColor(Color.black)
                 Button(action: {
                     withAnimation {
-                        self.centerView = AnyView(OldestPhotosView(leftMenuState: self._showLeftMenu, rightMenuState: self._showRightMenu))
+                        self.centerView = AnyView(OldestPhotosView(leftMenuState: self.$showLeftMenu, rightMenuState: self.$showRightMenu))
                         self.showRightMenu.toggle()
                     }
                 }, label: {
                     Text("Show Old Photos")
-                        .foregroundColor(Color.black) })
+                        .foregroundColor(Color.black)
+                })
                 Spacer()
             }
         }
         .background(Color.red)
-            .background(Rectangle().shadow(radius: 4))
+        .background(Rectangle().shadow(radius: 4))
     }
     
     init(showLeftMenu: Binding<Bool> = .constant(false), showRightMenu: Binding<Bool> = .constant(false), centerView: Binding<AnyView?>) {

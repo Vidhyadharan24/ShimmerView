@@ -35,8 +35,7 @@ class APIService<T> where T: Decodable {
             .mapError({ (error) -> NetworkError in
                 print("decoder error \(error)")
                 return NetworkError.jsonDecoderError(error)
-            })
-            .mapError(NetworkError.jsonDecoderError) // 5. catch and map error from JSONDecoder
+            }) // 5. catch and map error from JSONDecoder
             .subscribe(on: self.backgroundQueue) // process on background/private queue
             .receive(on: DispatchQueue.main) // send result on main queue
             .eraseToAnyPublisher() // IMPORTANT: use AnyPublisher to hide implementation details to outside, hence "type-erased"
