@@ -11,8 +11,8 @@ import SFSafeSymbols
 import SideMenu
 
 struct PopularPhotosView: View {
-    @Binding var leftMenuState: Bool
-    @Binding var rightMenuState: Bool
+    @Environment(\.sideMenuLeftPanelKey) var sideMenuLeftPanel
+    @Environment(\.sideMenuRightPanelKey) var sideMenuRightPanel
     
     @ObservedObject var viewModel = PhotosViewModel()
     
@@ -25,7 +25,7 @@ struct PopularPhotosView: View {
                 .navigationBarItems(
                     leading: Button(action: {
                         withAnimation {
-                            self.leftMenuState.toggle()
+                            self.sideMenuLeftPanel.wrappedValue = !self.sideMenuLeftPanel.wrappedValue
                         }
                     }, label: {
                         Image(systemName: SFSymbol.lineHorizontal3.rawValue)
@@ -34,7 +34,7 @@ struct PopularPhotosView: View {
                     }),
                     trailing: Button(action: {
                         withAnimation {
-                            self.rightMenuState.toggle()
+                            self.sideMenuRightPanel.wrappedValue = !self.sideMenuRightPanel.wrappedValue
                         }
                     }, label: {
                         Image(systemName: SFSymbol.lineHorizontal3.rawValue)
@@ -43,6 +43,8 @@ struct PopularPhotosView: View {
                         
                     })
             )
+        }.onAppear {
+            self.fetchData()
         }
     }
     
@@ -75,19 +77,12 @@ struct PopularPhotosView: View {
     private func fetchData() {
         self.viewModel.fetchPhotos(orderBy: .popular)
     }
-    
-    init(leftMenuState: Binding<Bool> = .constant(false), rightMenuState: Binding<Bool> = .constant(false)) {
-        self._leftMenuState = leftMenuState
-        self._rightMenuState = rightMenuState
-        
-        fetchData()
-    }
 }
 
 #if DEBUG
 struct PopularPhotosView_Previews : PreviewProvider {
     static var previews: some View {
-        PopularPhotosView(leftMenuState: .constant(false), rightMenuState: .constant(false))
+        PopularPhotosView()
     }
 }
 #endif

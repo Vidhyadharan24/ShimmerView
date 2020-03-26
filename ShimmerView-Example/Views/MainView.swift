@@ -10,30 +10,12 @@ import SwiftUI
 import SideMenu
 
 struct MainView : View {
-    
-    @State var centerView: AnyView? = nil
-    
-    @State var showLeftMenu: Bool = false
-    @State var showRightMenu: Bool = false
-    
     var body: some View {
-        let leftMenu = LeftMenu(showLeftMenu: $showLeftMenu, showRightMenu: $showRightMenu,
-                                centerView: $centerView)
-        let rightMenu = RightMenu(showLeftMenu: $showLeftMenu, showRightMenu: $showRightMenu,
-                                  centerView: $centerView)
-        
-        return SideMenu(leftMenu: leftMenu, showLeftMenu: $showLeftMenu,
-                        rightMenu: rightMenu, showRightMenu: $showRightMenu,
-                        centerView: $centerView)
+        SideMenu(leftMenu: LeftMenu(),
+                 rightMenu: RightMenu(),
+                 centerView: LatestPhotosView())
             .environmentObject(ShimmerConfig())
-            .onAppear {
-                withAnimation {
-                    self.centerView = AnyView(LatestPhotosView(leftMenuState: self.$showLeftMenu,
-                                                               rightMenuState: self.$showRightMenu))
-                }
-        }
     }
-    
 }
 
 #if DEBUG

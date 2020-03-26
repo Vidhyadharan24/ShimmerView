@@ -11,8 +11,8 @@ import SFSafeSymbols
 import SideMenu
 
 struct LatestPhotosView: View {
-    @Binding var leftMenuState: Bool
-    @Binding var rightMenuState: Bool
+    @Environment(\.sideMenuLeftPanelKey) var sideMenuLeftPanel
+    @Environment(\.sideMenuRightPanelKey) var sideMenuRightPanel
     
     @ObservedObject var viewModel = PhotosViewModel()
     
@@ -25,7 +25,7 @@ struct LatestPhotosView: View {
             .navigationBarItems(
                 leading: Button(action: {
                     withAnimation {
-                        self.leftMenuState.toggle()
+                        self.sideMenuLeftPanel.wrappedValue = !self.sideMenuLeftPanel.wrappedValue
                     }
                 }, label: {
                     Image(systemName: SFSymbol.lineHorizontal3.rawValue)
@@ -34,7 +34,7 @@ struct LatestPhotosView: View {
                 }),
                 trailing: Button(action: {
                     withAnimation {
-                        self.rightMenuState.toggle()
+                        self.sideMenuRightPanel.wrappedValue = !self.sideMenuRightPanel.wrappedValue
                     }
                 }, label: {
                     Image(systemName: SFSymbol.lineHorizontal3.rawValue)
@@ -43,6 +43,8 @@ struct LatestPhotosView: View {
 
                 })
             )
+        }.onAppear {
+            self.fetchData()
         }
     }
     
@@ -75,19 +77,12 @@ struct LatestPhotosView: View {
     private func fetchData() {
         self.viewModel.fetchPhotos(orderBy: .latest)
     }
-    
-    init(leftMenuState: Binding<Bool> = .constant(false), rightMenuState: Binding<Bool> = .constant(false)) {
-        self._leftMenuState = leftMenuState
-        self._rightMenuState = rightMenuState
-
-        fetchData()
-    }
 }
 
 #if DEBUG
 struct LatestPhotosView_Previews : PreviewProvider {
     static var previews: some View {
-        LatestPhotosView(leftMenuState: .constant(false), rightMenuState: .constant(false))
+        LatestPhotosView()
     }
 }
 #endif
