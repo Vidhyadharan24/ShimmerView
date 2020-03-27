@@ -19,7 +19,7 @@ public class ShimmerConfig: ObservableObject {
     var shimmerAngle: Double
     var shimmerDuration: Double
 
-    private var timer: Timer?
+    private var timer: AnyCancellable?
     
     @Published internal var isActive: Bool = false
     
@@ -35,16 +35,19 @@ public class ShimmerConfig: ObservableObject {
         self.shimmerAngle = shimmerAngle
         self.shimmerDuration = shimmerDuration
 
-        self.timer = Timer.scheduledTimer(withTimeInterval: shimmerDelay, repeats: true) { [weak self] _ in
+        self.timer =  Timer
+               .publish(every: shimmerDelay, on: RunLoop.main, in: RunLoop.Mode.default)
+               .autoconnect()
+               .sink(receiveValue: { [weak self] _ in
             guard let self = self else { return }
             self.isActive = false
             
             withAnimation { self.isActive = true }
-        }
+        })
     }
     
     deinit {
-        timer?.invalidate()
+        timer?.cancel()
         timer = nil
     }
     
