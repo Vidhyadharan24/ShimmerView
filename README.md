@@ -57,10 +57,5 @@ struct MainView : View {
     
 ```
 
-
-## Known Issues
-
-* Placing the `.cornerRadius` view modifier after the `.shimmer` view modifier crashes the app.
-
 ## SideMenu
 For the Side Menu go to `https://github.com/Vidhyadharan-Mohanram/SideMenu` for more details.
