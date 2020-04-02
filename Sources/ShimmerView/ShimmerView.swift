@@ -13,7 +13,7 @@ public struct ShimmerModifier: ViewModifier {
     
     public func body(content: Content) -> Self.Body {
         guard isActive else { return AnyView(content) }
-        return AnyView(ShimmerView())
+        return AnyView(content.overlay(ShimmerView().clipped()))
     }
     
     public typealias Body = AnyView
