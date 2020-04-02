@@ -57,5 +57,10 @@ struct MainView : View {
     
 ```
 
+
+## Known Issues
+
+* Shimmers when active in the simulator causes the simulator and the mac OS to stutter.
+
 ## SideMenu
 For the Side Menu go to `https://github.com/Vidhyadharan-Mohanram/SideMenu` for more details.
