@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  ShimmerView-Example
+//  ShimmerView
 //
 //  Created by Vidhyadharan Mohanram on 13/07/19.
 //  Copyright © 2019 Vid. All rights reserved.

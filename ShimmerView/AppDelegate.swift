@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ShimmerView-Example
+//  ShimmerView
 //
-//  Created by Vidhyadharan Mohanram on 03/07/19.
+//  Created by Vidhyadharan Mohanram on 23/06/19.
 //  Copyright © 2019 Vid. All rights reserved.
 //
 

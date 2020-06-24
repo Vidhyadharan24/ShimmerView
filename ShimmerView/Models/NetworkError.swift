@@ -1,6 +1,6 @@
 //
 //  NetworkError.swift
-//  ShimmerView-Example
+//  ShimmerView
 //
 //  Created by Vidhyadharan Mohanram on 03/07/19.
 //  Copyright © 2019 Vid. All rights reserved.

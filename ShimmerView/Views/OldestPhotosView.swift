@@ -1,6 +1,6 @@
 //
 //  OldestPhotosView.swift
-//  ShimmerView-Example
+//  ShimmerView
 //
 //  Created by Vidhyadharan Mohanram on 23/06/19.
 //  Copyright © 2019 Vid. All rights reserved.
@@ -55,13 +55,15 @@ struct OldestPhotosView: View {
                 ForEach(1..<4) { _ in
                     ListPhotoRow(shouldShimmer: true)
                 }
-            })
+            }
+            .listStyle(PlainListStyle()))
         case .completedWithNoData:
             view = AnyView(Text("No photos"))
         case .completed(let photos):
             view = AnyView(List(photos) { photo in
                 ListPhotoRow(photo: photo)
-            })
+            }
+            .listStyle(PlainListStyle()))
         case .failed(let errorMessage):
             view = AnyView(Text(errorMessage)
                 .lineLimit(nil)

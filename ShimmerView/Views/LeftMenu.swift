@@ -1,6 +1,6 @@
 //
 //  LeftMenu.swift
-//  ShimmerView-Example
+//  ShimmerView
 //
 //  Created by Vidhyadharan Mohanram on 23/06/19.
 //  Copyright © 2019 Vid. All rights reserved.
@@ -25,9 +25,7 @@ internal struct LeftMenu: View {
         
         return GeometryReader { geometry in
             VStack(spacing: 10) {
-                Spacer()
                 Text("Hello World!")
-                    .foregroundColor(Color.black)
                 Button(action: {
                     withAnimation {
                         self.sideMenuCenterView.wrappedValue = AnyView(PopularPhotosView())
@@ -35,7 +33,6 @@ internal struct LeftMenu: View {
                     }
                 }, label: {
                     Text("Show Popular Photos")
-                        .foregroundColor(.black)
                 })
                 Button(action: {
                     withAnimation {
@@ -47,13 +44,13 @@ internal struct LeftMenu: View {
                     }
                 }, label: {
                     Text(text)
-                        .foregroundColor(.black)
                 })
-                Spacer()
             }
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            .foregroundColor(.black)
+            .background(Color.blue)
+            .background(Rectangle().shadow(radius: 4))
         }
-        .background(Color.blue)
-        .background(Rectangle().shadow(radius: 4))
     }
 }
 

@@ -62,7 +62,7 @@
 		1803894122DF4C4E0044A3C8 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1803894422DF4C4E0044A3C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1803894522DF4C4E0044A3C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1806302D22D8743800A069AE /* ShimmerView-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShimmerView-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1806302D22D8743800A069AE /* ShimmerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShimmerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1806303022D8743800A069AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1806303222D8743800A069AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1806303622D8743900A069AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				18BADE4B22D877DC0004026F /* Sources */,
-				1806302F22D8743800A069AE /* ShimmerView-Example */,
+				1806302F22D8743800A069AE /* ShimmerView */,
 				1806302E22D8743800A069AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 		1806302E22D8743800A069AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1806302D22D8743800A069AE /* ShimmerView-Example.app */,
+				1806302D22D8743800A069AE /* ShimmerView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1806302F22D8743800A069AE /* ShimmerView-Example */ = {
+		1806302F22D8743800A069AE /* ShimmerView */ = {
 			isa = PBXGroup;
 			children = (
 				1806303E22D8743900A069AE /* Info.plist */,
@@ -176,7 +176,7 @@
 				1803893922DF4C4E0044A3C8 /* Views */,
 				1806303622D8743900A069AE /* Assets.xcassets */,
 			);
-			path = "ShimmerView-Example";
+			path = ShimmerView;
 			sourceTree = "<group>";
 		};
 		1806303822D8743900A069AE /* Preview Content */ = {
@@ -207,9 +207,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1806302C22D8743800A069AE /* ShimmerView-Example */ = {
+		1806302C22D8743800A069AE /* ShimmerView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1806304122D8743900A069AE /* Build configuration list for PBXNativeTarget "ShimmerView-Example" */;
+			buildConfigurationList = 1806304122D8743900A069AE /* Build configuration list for PBXNativeTarget "ShimmerView" */;
 			buildPhases = (
 				1806302922D8743800A069AE /* Sources */,
 				1806302A22D8743800A069AE /* Frameworks */,
@@ -219,13 +219,13 @@
 			);
 			dependencies = (
 			);
-			name = "ShimmerView-Example";
+			name = ShimmerView;
 			packageProductDependencies = (
 				1803896222DF4C760044A3C8 /* SFSafeSymbols */,
 				18F4C563243B052600C5696C /* SideMenu */,
 			);
-			productName = "ShimmerView-Example";
-			productReference = 1806302D22D8743800A069AE /* ShimmerView-Example.app */;
+			productName = "ShimmerView";
+			productReference = 1806302D22D8743800A069AE /* ShimmerView.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -235,7 +235,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Vid;
 				TargetAttributes = {
 					1806302C22D8743800A069AE = {
@@ -243,7 +243,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1806302822D8743800A069AE /* Build configuration list for PBXProject "ShimmerView-Example" */;
+			buildConfigurationList = 1806302822D8743800A069AE /* Build configuration list for PBXProject "ShimmerView" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -260,7 +260,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1806302C22D8743800A069AE /* ShimmerView-Example */,
+				1806302C22D8743800A069AE /* ShimmerView */,
 			);
 		};
 /* End PBXProject section */
@@ -350,6 +350,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -410,6 +411,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -443,10 +445,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "ShimmerView-Example/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "ShimmerView/Preview\\ Content";
 				DEVELOPMENT_TEAM = WLNG5C7UJQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "ShimmerView-Example/Info.plist";
+				INFOPLIST_FILE = "ShimmerView/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,10 +465,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "ShimmerView-Example/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "ShimmerView/Preview\\ Content";
 				DEVELOPMENT_TEAM = WLNG5C7UJQ;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "ShimmerView-Example/Info.plist";
+				INFOPLIST_FILE = "ShimmerView/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -481,7 +483,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1806302822D8743800A069AE /* Build configuration list for PBXProject "ShimmerView-Example" */ = {
+		1806302822D8743800A069AE /* Build configuration list for PBXProject "ShimmerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1806303F22D8743900A069AE /* Debug */,
@@ -490,7 +492,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1806304122D8743900A069AE /* Build configuration list for PBXNativeTarget "ShimmerView-Example" */ = {
+		1806304122D8743900A069AE /* Build configuration list for PBXNativeTarget "ShimmerView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1806304222D8743900A069AE /* Debug */,
