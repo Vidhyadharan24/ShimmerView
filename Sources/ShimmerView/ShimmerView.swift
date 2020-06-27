@@ -27,15 +27,6 @@ extension View {
     
 }
 
-struct ShimmerViewDemo : View {
-    var shouldShimmer: Bool = true
-    
-    var body: some View {
-        Rectangle()
-            .shimmer(isActive: shouldShimmer)
-    }
-}
-
 struct ShimmerView : View {
     @EnvironmentObject private var shimmerConfig: ShimmerConfig
         
@@ -75,8 +66,31 @@ struct ShimmerView : View {
     }
 }
 
+@available(iOS 14.0, *)
+struct ShimmerViewProvider: LibraryContentProvider {
+
+    func modifiers<V: View>(base: V) -> [LibraryItem] {
+        [
+            LibraryItem(base.shimmer(isActive: true),
+                        visible: true,
+                        category: .effect),
+        ]
+    }
+
+}
+
 
 #if DEBUG
+
+struct ShimmerViewDemo : View {
+    var shouldShimmer: Bool = true
+    
+    var body: some View {
+        Rectangle()
+            .shimmer(isActive: shouldShimmer)
+    }
+}
+
 struct ShimmerView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
